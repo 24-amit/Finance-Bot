@@ -5,7 +5,9 @@ import { auth, db } from "../firebase/config";
 import "./FinancialAssistant.css";
 
 const API_BASE_URL =
-  import.meta.env.VITE_API_BASE_URL || "http://127.0.0.1:8000";
+  import.meta.env.VITE_API_BASE_URL ||
+  (import.meta.env.DEV ? "http://127.0.0.1:8000" : "");
+
 const MAX_HISTORY_MESSAGES = 8;
 
 const suggestions = [
@@ -184,7 +186,11 @@ export default function FinancialAssistant() {
           </button>
         </div>
 
-        {error && <p className="assistant-error" role="alert">{error}</p>}
+        {error && (
+          <p className="assistant-error" role="alert">
+            {error}
+          </p>
+        )}
 
         <div className="assistant-suggestions">
           {suggestions.map((suggestion) => (

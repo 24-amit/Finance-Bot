@@ -16,10 +16,14 @@ from firebase_admin import auth as firebase_auth
 from firebase_admin import credentials, firestore
 from groq import AsyncGroq
 from pydantic import BaseModel, Field, field_validator
+from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
 
 logging.basicConfig(level=logging.INFO)
 
 BASE_DIR = Path(__file__).resolve().parent
+FRONTEND_DIST = BASE_DIR.parent / "dist"
+
 load_dotenv(BASE_DIR / ".env")
 
 SERVICE_ACCOUNT = os.getenv("FIREBASE_SERVICE_ACCOUNT", "service-account.json")
@@ -42,7 +46,17 @@ db = firestore.client()
 groq_client = AsyncGroq(api_key=os.environ["GROQ_API_KEY"])
 MODEL = os.getenv("GROQ_MODEL", "openai/gpt-oss-120b")
 
+
 app = FastAPI(title="MoneyMate Financial Assistant API")
+
+# Serve frontend static assets from the React build.
+if (FRONTEND_DIST / "assets").is_dir():
+    app.mount(
+        "/assets",
+        StaticFiles(directory=FRONTEND_DIST / "assets"),
+        name="frontend-assets",
+    )
+
 bearer_scheme = HTTPBearer()
 
 # Set FRONTEND_ORIGINS to comma-separated production and local frontend URLs.
@@ -265,7 +279,15 @@ def build_financial_context(uid: str) -> dict:
 
 @app.get("/")
 def root():
-    return {"status": "ok", "service": "MoneyMate Financial Assistant API"}
+    index_file = FRONTEND_DIST / "index.html"
+
+    if index_file.is_file():
+        return FileResponse(index_file)
+
+    return {
+        "status": "ok",
+        "service": "MoneyMate Financial Assistant API",
+    }
 
 
 @app.get("/health")
@@ -350,3 +372,16 @@ Rules:
                 "model availability, and API usage limits."
             ),
         ) from exc
+        
+
+@app.get("/{full_path:path}")
+def frontend_routes(full_path: str):
+    index_file = FRONTEND_DIST / "index.html"
+
+    if full_path.startswith("api/"):
+        raise HTTPException(status_code=404, detail="Not Found")
+
+    if index_file.is_file():
+        return FileResponse(index_file)
+
+    raise HTTPException(status_code=404, detail="Not Found")
