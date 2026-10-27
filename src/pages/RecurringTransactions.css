@@ -1,0 +1,610 @@
+.recurring-page {
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 100vh;
+    padding: 32px;
+    background: #f4f7f5;
+    color: #17251e;
+    font-family: Inter, Arial, sans-serif;
+}
+
+.recurring-header {
+    max-width: 1400px;
+    margin: 0 auto 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+.recurring-eyebrow {
+    margin: 0 0 8px;
+    color: #287653;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1.8px;
+}
+
+.recurring-header h1 {
+    margin: 0;
+    font-size: clamp(26px, 4vw, 36px);
+    letter-spacing: -1px;
+}
+
+.recurring-subtitle {
+    margin: 10px 0 0;
+    color: #6b7b72;
+    line-height: 1.6;
+}
+
+.recurring-header-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.recurring-secondary-button,
+.recurring-logout-button,
+.recurring-primary-button,
+.recurring-pause-button,
+.recurring-delete-button {
+    padding: 11px 15px;
+    border: 0;
+    border-radius: 9px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.recurring-secondary-button {
+    background: #e4eee7;
+    color: #245b40;
+}
+
+.recurring-secondary-button:hover {
+    background: #d6e6db;
+}
+
+.recurring-logout-button,
+.recurring-delete-button {
+    color: #a33232;
+    background: #fbe8e7;
+}
+
+.recurring-logout-button:hover,
+.recurring-delete-button:hover {
+    background: #f6d7d5;
+}
+
+.recurring-summary-grid {
+    max-width: 1400px;
+    margin: 0 auto 22px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.recurring-summary-card {
+    padding: 22px;
+    background: #ffffff;
+    border: 1px solid #e5ece7;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(20, 60, 38, 0.035);
+}
+
+.recurring-summary-card span,
+.recurring-summary-card small {
+    display: block;
+    color: #718077;
+    font-size: 13px;
+}
+
+.recurring-summary-card strong {
+    display: block;
+    margin: 14px 0 8px;
+    color: #1c5c3c;
+    font-size: clamp(22px, 3vw, 29px);
+    overflow-wrap: anywhere;
+}
+
+.recurring-summary-card small {
+    line-height: 1.5;
+}
+
+
+.upcoming-payments {
+    width: 100%;
+    max-width: 1400px;
+    min-width: 0;
+    box-sizing: border-box;
+    margin: 0 auto 28px;
+    padding: 22px;
+    border: 1px solid var(--border-color, #e5e7eb);
+    border-radius: 16px;
+    background: var(--card-background, #ffffff);
+}
+
+.upcoming-payments-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+
+.upcoming-payments-header>* {
+    min-width: 0;
+}
+
+.upcoming-payments-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 12px;
+    min-width: 0;
+    max-width: 100%;
+}
+
+.upcoming-payments-actions button {
+    max-width: 100%;
+    box-sizing: border-box;
+    white-space: normal;
+    overflow-wrap: anywhere;
+}
+
+.upcoming-payment-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+.upcoming-payment-item>div {
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+.upcoming-payment-item>strong {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+}
+
+
+.upcoming-payments-header h2 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.upcoming-payments-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.upcoming-payments-actions>span {
+    color: #64748b;
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+.notification-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px;
+    padding: 10px 16px;
+    border: 1px solid #176b4d;
+    border-radius: 9px;
+    background: #176b4d;
+    color: #ffffff;
+    font: inherit;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.notification-button:hover:not(:disabled) {
+    background: #12563e;
+    border-color: #12563e;
+}
+
+.notification-button:focus-visible {
+    outline: 3px solid rgba(23, 107, 77, 0.25);
+    outline-offset: 3px;
+}
+
+.notification-button:disabled {
+    background: #e8f3ed;
+    border-color: #c8e2d3;
+    color: #176b4d;
+    cursor: default;
+}
+
+@media (max-width: 600px) {
+    .upcoming-payments-actions {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .notification-button {
+        max-width: 100%;
+    }
+}
+
+.upcoming-payments-header span {
+    font-size: 0.85rem;
+    color: #64748b;
+}
+
+.upcoming-payment-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.upcoming-payment-item:last-child {
+    border-bottom: none;
+}
+
+.upcoming-payment-item p {
+    margin: 6px 0 0;
+    color: #64748b;
+    font-size: 0.9rem;
+}
+
+.upcoming-expense {
+    color: #dc2626;
+}
+
+.upcoming-income {
+    color: #16a34a;
+}
+
+.upcoming-empty {
+    color: #64748b;
+}
+
+.recurring-panel {
+    max-width: 1400px;
+    margin: 0 auto 22px;
+    padding: 25px;
+    background: #ffffff;
+    border: 1px solid #e5ece7;
+    border-radius: 16px;
+    box-shadow: 0 5px 20px rgba(20, 60, 38, 0.035);
+}
+
+.recurring-section-heading h2 {
+    margin: 0;
+    font-size: 21px;
+}
+
+.recurring-section-heading p {
+    margin: 8px 0 22px;
+    color: #718077;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.recurring-type-switch {
+    display: inline-flex;
+    gap: 4px;
+    padding: 5px;
+    margin-bottom: 23px;
+    background: #edf2ee;
+    border-radius: 10px;
+}
+
+.recurring-type-switch button {
+    padding: 10px 22px;
+    border: 0;
+    border-radius: 7px;
+    background: transparent;
+    color: #627268;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.recurring-type-switch button.selected {
+    background: #176b4a;
+    color: #ffffff;
+    box-shadow: 0 2px 6px rgba(23, 107, 74, 0.18);
+}
+
+.recurring-form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    margin-bottom: 24px;
+}
+
+.recurring-form-grid label {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    color: #30463a;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.recurring-form-grid input,
+.recurring-form-grid select {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    padding: 12px 13px;
+    border: 1px solid #d5e0d8;
+    border-radius: 9px;
+    outline: none;
+    background: #fbfdfb;
+    color: #20382a;
+    font: inherit;
+    font-weight: 400;
+}
+
+.recurring-form-grid input:focus,
+.recurring-form-grid select:focus {
+    border-color: #278456;
+    box-shadow: 0 0 0 3px rgba(39, 132, 86, 0.1);
+}
+
+.recurring-primary-button {
+    background: #176b4a;
+    color: #ffffff;
+    padding: 13px 19px;
+}
+
+.recurring-primary-button:hover:not(:disabled) {
+    background: #10583b;
+}
+
+.recurring-primary-button:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+}
+
+.recurring-list {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+}
+
+.recurring-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 22px;
+    padding: 20px;
+    border: 1px solid #e5ece7;
+    border-radius: 13px;
+    background: #fcfdfc;
+}
+
+.recurring-item.paused {
+    opacity: 0.72;
+    background: #f7f8f7;
+}
+
+.recurring-item-main {
+    min-width: 0;
+}
+
+.recurring-item-title {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.recurring-item-title h3 {
+    margin: 0;
+    font-size: 16px;
+    overflow-wrap: anywhere;
+}
+
+.recurring-item-main>p {
+    margin: 9px 0 0;
+    color: #718077;
+    font-size: 13px;
+}
+
+.recurring-item-main .recurring-next-date {
+    color: #426b53;
+}
+
+.recurring-type-badge {
+    padding: 5px 8px;
+    border-radius: 6px;
+    font-size: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.recurring-type-badge.expense {
+    color: #a13c31;
+    background: #fbe8e7;
+}
+
+.recurring-type-badge.income {
+    color: #1c7547;
+    background: #e1f4e8;
+}
+
+.recurring-item-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.recurring-item-actions>strong {
+    color: #1c5c3c;
+    font-size: 19px;
+}
+
+.recurring-state {
+    padding: 5px 9px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.recurring-state.active {
+    color: #1c7547;
+    background: #e1f4e8;
+}
+
+.recurring-state.inactive {
+    color: #68796e;
+    background: #edf1ee;
+}
+
+.recurring-item-actions>div {
+    display: flex;
+    gap: 7px;
+}
+
+.recurring-pause-button {
+    color: #245b40;
+    background: #e4eee7;
+}
+
+.recurring-pause-button:hover {
+    background: #d6e6db;
+}
+
+.recurring-empty {
+    padding: 35px 20px;
+    text-align: center;
+    border: 1px dashed #d5e0d8;
+    border-radius: 12px;
+    background: #fbfdfb;
+}
+
+.recurring-empty h3 {
+    margin: 0;
+    font-size: 17px;
+}
+
+.recurring-empty p {
+    margin: 9px 0 0;
+    color: #718077;
+    font-size: 14px;
+}
+
+.recurring-message {
+    max-width: 1400px;
+    margin: 0 auto 20px;
+    padding: 13px 16px;
+    border-radius: 10px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.recurring-error {
+    color: #a52d2d;
+    background: #fde9e8;
+    border: 1px solid #f6d0ce;
+}
+
+.recurring-success {
+    color: #1c6841;
+    background: #e4f5e9;
+    border: 1px solid #cce9d5;
+}
+
+.recurring-loading {
+    padding: 60px 20px;
+    color: #68796e;
+    text-align: center;
+}
+
+@media (max-width: 900px) {
+    .recurring-summary-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .recurring-item {
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 650px) {
+    .recurring-page {
+        padding: 18px 14px;
+    }
+
+    .recurring-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .recurring-header-actions {
+        width: 100%;
+    }
+
+    .recurring-header-actions button {
+        flex: 1;
+    }
+
+    .recurring-panel {
+        padding: 18px;
+    }
+
+    .recurring-form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .recurring-item {
+        flex-direction: column;
+    }
+
+    .recurring-item-actions {
+        align-items: flex-start;
+        width: 100%;
+    }
+
+    .recurring-item-actions>div {
+        flex-wrap: wrap;
+    }
+
+    .recurring-primary-button {
+        width: 100%;
+    }
+
+    .upcoming-payments {
+        padding: 18px;
+    }
+
+    .upcoming-payments-header {
+        align-items: flex-start;
+    }
+
+    .upcoming-payments-actions {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .upcoming-payment-item {
+        align-items: flex-start;
+    }
+
+    .upcoming-payment-item>strong {
+        margin-left: auto;
+    }
+}
